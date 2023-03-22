@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Checkout</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img class="logo" src="images/logo.jpg" alt=""></div>
+        <ul class="menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">New Arrivals</a></li>
+            <li><a href="">Fashion</a></li>
+            <li><a href="" class="active">Login</a></li>
+            <li><a href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="progress-checkout-container">
+        <div class="progress-step-container">
+            <div class="step-check"></div>
+            <span class="step-title">Shipping</span>
+        </div>
+        <div class="progress-step-container">
+            <div class="step-check"></div>
+            <span class="step-title">Payment</span>
+        </div>
+        <div class="progress-step-container">
+            <div class="step-check"></div>
+            <span class="step-title">Review</span>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2 class="form-title">Payment Details</h2>
+        <form action="" class="checkout-form">
+            <div class="input-line">
+                <label for="name">Name On Card</label>
+                <input type="text" name="name" id="name" placeholder="Your name and surname">
+            </div>
+            <div class="input-line">
+                <label for="card">Card Number</label>
+                <input type="text" name="card" placeholder="1111-2222-3333-4444">
+            </div>
+            <div class="input-container">
+                <div class="input-line">
+                    <label for="card">Expiry Date</label>
+                    <input type="text" name="card" placeholder="09-21">
+                </div>
+                <div class="input-line">
+                    <label for="date">CVC</label>
+                    <input type="text" name="cvc" id="cvc" placeholder="***">
+                </div>
+            </div>
+
+            <input type="button" value="Complete Purchase">
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+    
+    
+
+      
+
+       
