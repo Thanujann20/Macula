@@ -1,0 +1,22 @@
+{
+  "name": "macula",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thanujann20/Macula.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thanujann20/Macula/issues"
+  },
+  "homepage": "https://github.com/Thanujann20/Macula#readme",
+  "dependencies": {
+    "firebase": "^9.18.0"
+  }
+}
