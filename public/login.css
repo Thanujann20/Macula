@@ -32,6 +32,7 @@ body {
 .content {
     padding: 50px;
     background: white;
+    text-align: center;
 }
 
 .header {
@@ -56,14 +57,16 @@ body {
 }
 
 .button {
-    width: 100%;
-    padding: 20px;
+    width: 70%;
+    padding: 15px;
     color: white;
     background: rgb(29, 29, 197);
     font-weight: bold;
     border-style: none;
     outline: none;
     cursor: pointer;
+    margin: 5px;
+    border-radius: 20px;
 }
  .disclosure {
     font-weight: bold;
