@@ -4,7 +4,7 @@
         <meta charset="UFT - 8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="login.css">
-        <title>Login</title>
+        <title>Sign up</title>
     </head>
     <body>
         <form class="login" action="./" method="POST">
@@ -12,12 +12,14 @@
                 <img class ="logo" src="images/logo.jpeg" alt="Logo">
             </div>
             <div class="content">
-                <div class="header">Login To Your Account</div>
+                <div class="header">Sign up</div>
                 <input class="input" type="email" name="email" placeholder="Email">
-                <input class="input" type="password" name="password" placeholder="Password">
-                <button class="button" type="submit">Login</button>
+                <input class="input" type="password" name="password" placeholder="Password"><br><br>
+                <input type="checkbox" name="TOS" required>
+                <label> <strong>I agree to the terms and conditions</strong></label><br><br>
+                <button class="button" type="submit">Sign up</button>
                 <p class="disclosure">By continuing, you agree to Macula's Conditions of Use and Privacy Notice</p>
-                <p><strong>New User?</strong> <a href="signup.html">Sign up here</a></p>
+                <p><strong>Have an Account?</strong> <a href="login.html">Login here</a></p>
             </div>
         </form>
     </body>
