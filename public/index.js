@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { ref, get, child } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
-import {  onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js"
+import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js"
 import { app, db, auth } from "./firebase.js"
 
 window.addToCart = addToCart;
@@ -14,7 +14,7 @@ onAuthStateChanged(auth, (user) => {
   } else {
     // User is signed out
     // ...
-    console.log("no one")
+    console.log("no one logged in")
   }
 });
 
@@ -28,8 +28,8 @@ function showProducts() {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const prodElement = document.getElementById("products");
-      data.map((prod,i) => {
-        if( i <= 8 ) {
+      data.map((prod, i) => {
+        if (i <= 8) {
           prodElement.innerHTML += `
           <!-- card start-->
           <div class="card">
@@ -49,15 +49,33 @@ function showProducts() {
     } else {
       console.log("No data available");
     }
-}).catch((error) => {
-  console.error(error);
-});
+  }).catch((error) => {
+    console.error(error);
+  });
 }
 
 export function addToCart(prodId) {
-  if(!curUser){
+  if (!curUser) {
     alert("Will redirect you to login page!");
     window.location.href = "login.html";
   }
-  console.log("added to cart");
+
+
+  get(child(dbRef, `carts/${curUser.uid}/${prodId}`)).then((snapshot) => {
+    let curQuant;
+    if (snapshot.exists()) {
+      curQuant = snapshot.val();
+    } else {
+      curQuant = 0;
+    }
+
+    set(ref(db, `carts/${curUser.uid}/${prodId}`), curQuant + 1);
+    alert(`Added the product to cart!\nQuantity: ${curQuant+1}`)
+  }).catch((error) => {
+    console.error(error);
+  });
+
+
+
+
 }

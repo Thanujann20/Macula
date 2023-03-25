@@ -63,7 +63,7 @@ export function signUp() {
       // ...
     })
     .catch((error) => {
-      console.log("idhar");
+
       console.error(error);
     });
 }
@@ -79,9 +79,9 @@ function makeUserShell(user, firstname) {
     payment: {
       quantity: 0,
       ids: ""
-    }
+    },
   });
-  console.log("worked");
+
   updateProfile(auth.currentUser, {
     displayName: firstname
   }).then(() => {
