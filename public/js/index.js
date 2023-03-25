@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js"
-import { app, db, auth } from "./firebase.js"
+import { app, db, auth } from "../firebase.js"
 
 window.addToCart = addToCart;
 
