@@ -1,36 +1,32 @@
-// Import the functions you need from the SDKs you need
-import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js"
-import { app, db, auth } from "../firebase.js"
+import { products, getAccount } from "../js/firebase.js"
+
 
 window.addToCart = addToCart;
 
-const dbRef = ref(db);
-var curUser = null;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    curUser = user;
-    console.log(curUser);
-  } else {
-    // User is signed out
-    // ...
-    console.log("no one logged in")
-  }
-});
 
-window.onload = (event) => {
+let account;
+
+
+window.onload = async (event) => {
+  await new Promise(r => setTimeout(r, 400));
+  account = await Promise.resolve(getAccount());
+
+  const greeting = document.getElementById("greeting");
+  if (greeting) {
+    greeting.innerHTML = (account ? `Welcome ${account.user.displayName}!` : "Welcome!")
+  }
+  await new Promise(r => setTimeout(r, 500));
   showProducts();
 }
 
 function showProducts() {
 
-  get(child(dbRef, `products/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const prodElement = document.getElementById("products");
-      data.map((prod, i) => {
-        if (i <= 8) {
-          prodElement.innerHTML += `
+  const prodElement = document.getElementById("products");
+  const path = window.location.pathname;
+
+  products.map((prod) => {
+    if ((prod.id <= 8 && path == "/index.html") || (prod.special && ((prod.special == "Arrivals" && path == "/arrivals.html") || (prod.special == "Fashion" && path == "/fashion.html")))) {
+      prodElement.innerHTML += `
           <!-- card start-->
           <div class="card">
               <div class="img"><img src="images/${prod.imgFile}" alt=""></div>
@@ -38,44 +34,23 @@ function showProducts() {
               <div class="title">${prod.title}</div>
               <div class="box">
                   <div class="price">$${prod.price}</div>
-                  <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
+                  <button class="btn" onclick="addToCart(${prod.id})">Add to Cart</button>
               </div>
           </div>
           <!-- card end -->
         `;
-        }
-      })
-
-    } else {
-      console.log("No data available");
     }
-  }).catch((error) => {
-    console.error(error);
-  });
+  })
+
 }
 
 export function addToCart(prodId) {
-  if (!curUser) {
+  if (!account) {
     alert("Will redirect you to login page!");
     window.location.href = "login.html";
   }
 
-
-  get(child(dbRef, `carts/${curUser.uid}/${prodId}`)).then((snapshot) => {
-    let curQuant;
-    if (snapshot.exists()) {
-      curQuant = snapshot.val();
-    } else {
-      curQuant = 0;
-    }
-
-    set(ref(db, `carts/${curUser.uid}/${prodId}`), curQuant + 1);
-    alert(`Added the product to cart!\nQuantity: ${curQuant+1}`)
-  }).catch((error) => {
-    console.error(error);
-  });
-
-
+  account.addToCart(prodId);
 
 
 }

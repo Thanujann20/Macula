@@ -3,22 +3,31 @@
     <head>
         <meta charset="UFT - 8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <script defer src="/__/firebase/9.18.0/firebase-app-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
         <link rel="stylesheet" href="css/login.css">
         <title>Login</title>
     </head>
     <body>
-        <form class="login" action="./" method="POST">
+        <form class="login" onsubmit="return false;">
             <div class="logo-container">
                 <img class ="logo" src="images/logo.jpeg" alt="Logo">
             </div>
             <div class="content">
                 <div class="header">Login To Your Account</div>
-                <input class="input" type="email" name="email" placeholder="Email">
-                <input class="input" type="password" name="password" placeholder="Password">
-                <button class="button" type="submit">Login</button>
+                <input class="input" type="email" id="email" placeholder="Email">
+                <input class="input" type="password" id="password" placeholder="Password">
+                <button class="button" type="button" onclick="signIn()">Login</button>
                 <p class="disclosure">By continuing, you agree to Macula's Conditions of Use and Privacy Notice</p>
                 <p><strong>New User?</strong> <a href="signup.html">Sign up here</a></p>
             </div>
         </form>
     </body>
+    <script defer src="js/login.js" type="module"></script>
 </html> 

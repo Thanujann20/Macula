@@ -3,24 +3,33 @@
     <head>
         <meta charset="UFT - 8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script defer src="/__/firebase/9.18.0/firebase-app-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/9.18.0/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
         <link rel="stylesheet" href="css/login.css">
         <title>Sign up</title>
     </head>
     <body>
-        <form class="login" action="./" method="POST">
+        <form class="login" onsubmit="return false;">
             <div class="logo-container">
                 <img class ="logo" src="images/logo.jpeg" alt="Logo">
             </div>
             <div class="content">
                 <div class="header">Sign up</div>
-                <input class="input" type="email" name="email" placeholder="Email">
-                <input class="input" type="password" name="password" placeholder="Password"><br><br>
+                <input class="input" type="text" id="name" placeholder="First Name">
+                <input class="input" type="email" id="email" placeholder="Email">
+                <input class="input" type="password" id="password" placeholder="Password"><br><br>
                 <input type="checkbox" name="TOS" required>
                 <label> <strong>I agree to the terms and conditions</strong></label><br><br>
-                <button class="button" type="submit">Sign up</button>
+                <button class="button" onclick="signUp()">Sign up</button>
                 <p class="disclosure">By continuing, you agree to Macula's Conditions of Use and Privacy Notice</p>
                 <p><strong>Have an Account?</strong> <a href="login.html">Login here</a></p>
             </div>
         </form>
     </body>
+    <script src="js/signup.js" type="module"></script>
 </html> 
